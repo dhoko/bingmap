@@ -1,12 +1,12 @@
-/**
+﻿/**
 * Bing Map v1 Display a map for jQuery 1.6
-* Release date : 31/07/2011
+* Release date : 23/08/2011
 * 
 * 
 * @param  f  onMouseOver function || An object with configuration options
 * @param  g  onMouseOut function  || Nothing (use configuration options object)
 * @author    aurelien[dot]garroux[at]gmail[dot]com
-* @author Aurélien Garroux for Procheo
+* @author Aurelien Garroux for Procheo
 */
 
 (function($){
@@ -38,18 +38,19 @@
  
             //Bing Map Creation : God says to Microsoft to do it
             map = new Microsoft.Maps.Map(this, {
-    			credentials: options.api,
-        		mapTypeId : options.type,
-    			center: new Microsoft.Maps.Location(options.center_lat, options.center_lng),
-    			zoom : options.zoom,
-    			width : options.width,
-    			height : options.height,
-    			showScalebar : options.scaleBar,
-    			showDashboard : options.control,
-    			showLogo : options.bing_logo,
-    			showCopyright : options.copy,
-    			enableSearchLogo : options.search_logo
-    			});
+                credentials: options.api,
+                mapTypeId : options.type,
+                center: new Microsoft.Maps.Location(options.center_lat, options.center_lng),
+                zoom : options.zoom,
+                width : options.width,
+                height : options.height,
+                showScalebar : options.scaleBar,
+                showDashboard : options.control,
+                showLogo : options.bing_logo,
+                showCopyright : options.copy,
+                enableSearchLogo : options.search_logo,
+                disableKeyboardInput: true
+                });
 
         if(o.up) o.up.apply( this );
       
