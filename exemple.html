@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html lang="fr-FR">
+<head>
+	<meta charset="UTF-8">
+	<title>Demo Bing Map</title>
+	<!--<script charset="UTF-8" type="text/javascript" src="https://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>-->
+	<script charset="UTF-8" type="text/javascript" src="https://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	
+
+	
+
+	<style type="text/css">
+		.wrap{
+			width: 900px;
+			margin: 10px auto;
+			padding: 15px
+		}
+		.clear{clear: both; visibility: hidden; margin: 10px 0}
+		#map1{
+			width: 430px;
+			height: 300px;
+			margin-right: 20px;
+			float: left;
+		}
+		#map2{
+			width: 430px;
+			height: 300px;
+			float: left;
+		}
+
+		#map3{
+			width: 430px;
+			height: 300px;
+			margin-right: 20px;
+			float: left;
+		}
+		#map4{
+			width: 430px;
+			height: 300px;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		
+		<div id="map1"></div><div id="map2"></div>
+		<hr class="clear">
+		<div id="map3"></div><div id="map4"></div>
+	</div>
+</body>
+<script charset="UTF-8" type="text/javascript" src="bingmap.js"></script>
+<script type="text/javascript">
+		
+		var credentials = 'AtZVaPeWtqEJ7xglZZZ6WZJkMihxHRlweOWszXf0Oh7kf7SEQz1qT-jCDlGw9UAW';
+
+		$('#map1').bingmap({
+			api: credentials,
+			width: $('#map1').innerWidth(),
+			height: $('#map1').innerHeight(),
+
+		});
+
+		$('#map2').bingmap({
+			api: credentials,
+			width: $('#map2').innerWidth(),
+			height: $('#map2').innerHeight(),
+			zoom: 15,
+			type: "sky"
+		});
+
+		$('#map3').bingmap({
+			api: credentials,
+			width: $('#map1').innerWidth(),
+			height: $('#map1').innerHeight(),
+			type: "road",
+			zoom: 10,
+			pin : [{
+					lat: 48.733,
+					lng: 2.233,
+					drag: true
+				},{
+					lat: 48.783,
+					lng: 2.303
+				}],
+			onFinish : function(obj)
+			{
+				Microsoft.Maps.Events.addHandler(obj.pin[0], 'dragend', displayEventInfo);
+				function displayEventInfo(e) {
+					alert("Nous sommes au point de latutude : " +e.entity._location.latitude+ "et de longitude : "+e.entity._location.longitude);
+				       console.log(e.entity._location.latitude);
+					console.log(e.entity._location.longitude);
+				   }
+			}
+		});
+
+
+		$('#map4').bingmap({
+			api: credentials,
+			width: $('#map4').innerWidth(),
+			height: $('#map4').innerHeight(),
+			type: "road",
+			zoom: 10,
+			pin : [{
+					lat: 48.733,
+					lng: 2.233,
+					
+				},{
+					lat: 48.783,
+					lng: 2.303,drag: true
+				}],
+			onFinish : function(obj)
+			{
+				Microsoft.Maps.Events.addHandler(obj.pin[1], 'dragend', displayEventInfo);
+				function displayEventInfo(e) {
+					alert("Nous sommes au point de latutude : " +e.entity._location.latitude+ "et de longitude : "+e.entity._location.longitude);
+				       console.log(e.entity._location.latitude);
+					console.log(e.entity._location.longitude);
+				   }
+			}
+		});
+
+	</script>
+</html>
