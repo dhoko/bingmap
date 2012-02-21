@@ -7,8 +7,19 @@
 	<script charset="UTF-8" type="text/javascript" src="https://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	
-
-	
+	<script type="text/javascript" src="js/shCore.js"></script>
+ 
+		<!--
+		    At least one brush, here we choose JS. You need to include a brush for every 
+		    language you want to highlight
+		-->
+		<script type="text/javascript" src="css/shBrushJScript.js"></script>
+		<!-- Include *at least* the core style and default theme -->
+		<link href="css/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="css/shThemeDefault.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+     SyntaxHighlighter.all();
+</script>
 
 	<style type="text/css">
 		.wrap{
@@ -40,6 +51,13 @@
 			height: 300px;
 			float: left;
 		}
+		.codeshow{
+			font-size: 13px;
+			word-wrap: break-word;
+			width: 430px;
+			float: left;
+		}
+		.codeshow + .codeshow{margin-left: 20px}
 	</style>
 </head>
 <body>
@@ -47,7 +65,86 @@
 		
 		<div id="map1"></div><div id="map2"></div>
 		<hr class="clear">
+
+		<div class="codeshow">
+			<pre class="brush: js">$('#map1').bingmap({
+			api: credentials,
+			width: $('#map1').innerWidth(),
+			height: $('#map1').innerHeight(),
+
+		});</pre>
+		</div>
+		<div class="codeshow">
+			<pre class="brush: js">$('#map2').bingmap({
+			api: credentials,
+			width: $('#map2').innerWidth(),
+			height: $('#map2').innerHeight(),
+			zoom: 15,
+			type: "sky",
+			disable_zoom: true, 
+		});
+			</pre>
+		</div>
+
+		<hr class="clear">
 		<div id="map3"></div><div id="map4"></div>
+		<hr class="clear">
+		<div class="codeshow">
+			<pre class="brush: js">$('#map3').bingmap({
+				api: credentials,
+				width: $('#map4').innerWidth(),
+				height: $('#map3').innerHeight(),
+				type: "road",
+				zoom: 10,disable_zoom: false, 
+				pin : [{
+						lat: 48.733,
+						lng: 2.233,
+						drag: true
+					},{
+						lat: 48.783,
+						lng: 2.303
+					}],
+				onFinish : function(obj)
+				{
+					Microsoft.Maps.Events.addHandler(obj.pin[0], 'dragend', displayEventInfo);
+					function displayEventInfo(e) {
+						alert("Nous sommes au point de latutude : " +e.entity._location.latitude+ "et de longitude : "+e.entity._location.longitude);
+					       console.log(e.entity._location.latitude);
+						console.log(e.entity._location.longitude);
+					   }
+				}
+			});
+			</pre>
+		</div>
+		<div class="codeshow">
+			<pre class="brush: js">$('#map4').bingmap({
+			api: credentials,
+			width: $('#map4').innerWidth(),
+			height: $('#map4').innerHeight(),
+			type: "bird",
+			zoom: 10,
+			disable_zoom: false, 
+			disable_panning: false
+			pin : [{
+					lat: 48.733,
+					lng: 2.233,
+					
+				},{
+					lat: 48.783,
+					lng: 2.303,drag: true
+				}],
+			onFinish : function(obj)
+			{
+				Microsoft.Maps.Events.addHandler(obj.pin[1], 'dragend', displayEventInfo);
+				function displayEventInfo(e) {
+					alert("Nous sommes au point de latutude : " +e.entity._location.latitude+ "et de longitude : "+e.entity._location.longitude);
+				       console.log(e.entity._location.latitude);
+					console.log(e.entity._location.longitude);
+				   }
+			}
+		});
+			</pre>
+		</div>
 	</div>
 </body>
 <script charset="UTF-8" type="text/javascript" src="bingmap.js"></script>
@@ -59,6 +156,7 @@
 			api: credentials,
 			width: $('#map1').innerWidth(),
 			height: $('#map1').innerHeight(),
+			can_zoom: true
 
 		});
 
@@ -67,7 +165,8 @@
 			width: $('#map2').innerWidth(),
 			height: $('#map2').innerHeight(),
 			zoom: 15,
-			type: "sky"
+			type: "sky",
+			can_navigate: true
 		});
 
 		$('#map3').bingmap({
@@ -76,6 +175,10 @@
 			height: $('#map1').innerHeight(),
 			type: "road",
 			zoom: 10,
+			can_zoom: true, 
+			can_navigate: true,
+			latitude : 48.76218347089439,
+			longitude : 2.2769074707031445,
 			pin : [{
 					lat: 48.733,
 					lng: 2.233,
@@ -100,8 +203,10 @@
 			api: credentials,
 			width: $('#map4').innerWidth(),
 			height: $('#map4').innerHeight(),
-			type: "road",
+			type: "bird",
 			zoom: 10,
+			latitude : 48.76218347089439,
+			longitude : 2.2769074707031445,
 			pin : [{
 					lat: 48.733,
 					lng: 2.233,
