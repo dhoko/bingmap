@@ -5,7 +5,7 @@
  *
  * @author          Aurélien Garroux for Procheo
  * @docs            https://github.com/dhoko/bingmap
- * @version         Version 1
+ * @version         Version 1.1
  *
  ******************************************/
 
@@ -27,11 +27,8 @@ var config = {
     disable_zoom : true,
     disable_navigate : true,
     onFinish : function(obj){},
-    init : function(options){
-        
-    }
-}
 
+}
 var typeMap = [{name: "road",def: Microsoft.Maps.MapTypeId.road},{name: "sky",def: Microsoft.Maps.MapTypeId.aerial},{name: "bird",def: Microsoft.Maps.MapTypeId.birdseye}]
 var type_show = Microsoft.Maps.MapTypeId.road;
 var pins = [];
@@ -65,7 +62,6 @@ var pins = [];
                 disablePanning: o.disable_navigate
                 });
 
-       // console.log(o);
         if(o.up) o.up.apply( this );
 
         if(o.pin.length > 0){
@@ -78,10 +74,36 @@ var pins = [];
                             });
                 map.entities.push(pin);
                 pins[n] = pin;
+                if(e.title){
+
+                    if(!e.html) e.html = "";
+                    if(!e.width) e.width = 200;
+                    if(!e.height) e.height = 50;
+                    var visible = true;
+                    if(e.onShow) visible = false;
+
+                    var infoboxOptions = { 
+                                title: e.title, 
+                                description: e.html, 
+                                width: e.width,
+                                height : e.height,
+                                visible : visible,
+                                showPointer: false,  
+                                offset: new Microsoft.Maps.Point(5,25)};
+
+                    var infobox = new Microsoft.Maps.Infobox(new Microsoft.Maps.Location(e.lat, e.lng),infoboxOptions);
+                    if(e.onShow){
+                        Microsoft.Maps.Events.addHandler(pin, 'mouseover', showInfobox);
+                        Microsoft.Maps.Events.addHandler(pin, 'mouseout', hideInfobox);
+                        function showInfobox(){infobox.setOptions({visible:true});}
+                        function hideInfobox() {infobox.setOptions({visible:false});}
+                    }
+                    map.entities.push(infobox);
+                }
             });
         }
             //Callback Function
-        if(o.onFinish) o.onFinish.call(this, {pin: pins, map: map});     
+        if(o.onFinish) o.onFinish.call(this, {pin: pins, map: map});  
        
         });
         
