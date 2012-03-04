@@ -71,6 +71,7 @@
 			api: credentials,
 			width: $('#map1').innerWidth(),
 			height: $('#map1').innerHeight(),
+			disable_zoom: false
 
 		});</pre>
 		</div>
@@ -81,9 +82,8 @@
 			height: $('#map2').innerHeight(),
 			zoom: 15,
 			type: "sky",
-			disable_zoom: true, 
-		});
-			</pre>
+			disable_navigate: false
+		});</pre>
 		</div>
 
 		<hr class="clear">
@@ -91,30 +91,32 @@
 		<hr class="clear">
 		<div class="codeshow">
 			<pre class="brush: js">$('#map3').bingmap({
-				api: credentials,
-				width: $('#map4').innerWidth(),
-				height: $('#map3').innerHeight(),
-				type: "road",
-				zoom: 10,disable_zoom: false, 
-				pin : [{
-						lat: 48.733,
-						lng: 2.233,
-						drag: true
-					},{
-						lat: 48.783,
-						lng: 2.303
-					}],
-				onFinish : function(obj)
-				{
-					Microsoft.Maps.Events.addHandler(obj.pin[0], 'dragend', displayEventInfo);
-					function displayEventInfo(e) {
-						alert("Nous sommes au point de latutude : " +e.entity._location.latitude+ "et de longitude : "+e.entity._location.longitude);
-					       console.log(e.entity._location.latitude);
-						console.log(e.entity._location.longitude);
-					   }
-				}
-			});
-			</pre>
+			api: credentials,
+			width: $('#map1').innerWidth(),
+			height: $('#map1').innerHeight(),
+			type: "road",
+			zoom: 10,
+			disable_zoom: false, 
+			disable_navigate: false,
+			latitude : 48.76218347089439,
+			longitude : 2.2769074707031445,
+			pin : [{
+					lat: 48.733,
+					lng: 2.233,
+					drag: true
+				},{
+					lat: 48.783,
+					lng: 2.303
+				}],
+			onFinish : function(obj){
+				Microsoft.Maps.Events.addHandler(obj.pin[0], 'dragend', displayEventInfo);
+				function displayEventInfo(e) {
+					alert("Nous sommes au point de latutude : " +e.entity._location.latitude+ "et de longitude : "+e.entity._location.longitude);
+				       console.log(e.entity._location.latitude);
+					console.log(e.entity._location.longitude);
+				   }
+			}
+		});</pre>
 		</div>
 		<div class="codeshow">
 			<pre class="brush: js">$('#map4').bingmap({
@@ -123,8 +125,8 @@
 			height: $('#map4').innerHeight(),
 			type: "bird",
 			zoom: 10,
-			disable_zoom: false, 
-			disable_panning: false
+			latitude : 48.76218347089439,
+			longitude : 2.2769074707031445,
 			pin : [{
 					lat: 48.733,
 					lng: 2.233,
@@ -133,8 +135,7 @@
 					lat: 48.783,
 					lng: 2.303,drag: true
 				}],
-			onFinish : function(obj)
-			{
+			onFinish : function(obj) {
 				Microsoft.Maps.Events.addHandler(obj.pin[1], 'dragend', displayEventInfo);
 				function displayEventInfo(e) {
 					alert("Nous sommes au point de latutude : " +e.entity._location.latitude+ "et de longitude : "+e.entity._location.longitude);
@@ -142,8 +143,7 @@
 					console.log(e.entity._location.longitude);
 				   }
 			}
-		});
-			</pre>
+		});</pre>
 		</div>
 	</div>
 </body>
@@ -156,7 +156,7 @@
 			api: credentials,
 			width: $('#map1').innerWidth(),
 			height: $('#map1').innerHeight(),
-			can_zoom: true
+			disable_zoom: false
 
 		});
 
@@ -166,7 +166,7 @@
 			height: $('#map2').innerHeight(),
 			zoom: 15,
 			type: "sky",
-			can_navigate: true
+			disable_navigate: false
 		});
 
 		$('#map3').bingmap({
@@ -175,8 +175,8 @@
 			height: $('#map1').innerHeight(),
 			type: "road",
 			zoom: 10,
-			can_zoom: true, 
-			can_navigate: true,
+			disable_zoom: false, 
+			disable_navigate: false,
 			latitude : 48.76218347089439,
 			longitude : 2.2769074707031445,
 			pin : [{

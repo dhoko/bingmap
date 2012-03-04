@@ -1,48 +1,43 @@
-﻿/**
-* BingMap - Bing Map for jQuery
-* Release date : 21/02/2011
-* v 0.1.5
-* @author Aurélien Garroux for Procheo
-*/
+﻿/******************************************
+ * BingMap
+ *
+ * Bing Map for jQuery
+ *
+ * @author          Aurélien Garroux for Procheo
+ * @docs            https://github.com/dhoko/bingmap
+ * @version         Version 1
+ *
+ ******************************************/
 
 (function($){
-
-    var config = {
-        api : "Your API Key",
-        type : "road",
-        zoom : 5,
-        width : 500,
-        height : 400,
-        latitude : 48.833,
-        longitude : 2.333,
-        pin : [],
-        bing_logo : false,
-        search_logo : false,
-        scaleBar : false,
-        control : false,
-        copy : false,
-        can_zoom : false,
-        can_navigate : false,
-        onFinish : function(obj){},
-        init : function(options){
-            
-        }
+var config = {
+    api : "Your API Key",
+    type : "road",
+    zoom : 5,
+    width : 500,
+    height : 400,
+    latitude : 48.833,
+    longitude : 2.333,
+    pin : [],
+    bing_logo : false,
+    search_logo : false,
+    scaleBar : false,
+    control : false,
+    copy : false,
+    disable_zoom : true,
+    disable_navigate : true,
+    onFinish : function(obj){},
+    init : function(options){
+        
     }
+}
 
-    var typeMap = [{name: "road",def: Microsoft.Maps.MapTypeId.road},{name: "sky",def: Microsoft.Maps.MapTypeId.aerial},{name: "bird",def: Microsoft.Maps.MapTypeId.birdseye}]
-    var type_show = Microsoft.Maps.MapTypeId.road;
-    var pins = [];
-    var actZoom = true;
-    var actPan = true;
+var typeMap = [{name: "road",def: Microsoft.Maps.MapTypeId.road},{name: "sky",def: Microsoft.Maps.MapTypeId.aerial},{name: "bird",def: Microsoft.Maps.MapTypeId.birdseye}]
+var type_show = Microsoft.Maps.MapTypeId.road;
+var pins = [];
 
-    $.fn.bingmap = function(op){
-        if(op) var o = $.extend(config,op); 
-        
-        
-       
-
-        if(o.can_zoom == true) actZoom = false;
-        if(o.can_navigate == true) actPan = false;
+    $.fn.bingmap = function(o){
+        var o = $.extend({}, config, o || {});
 
         for(var i=0; i<=2; i++){
             if(o.type == typeMap[i].name)
@@ -66,11 +61,11 @@
                 enableClickableLogo: false,
                 disableKeyboardInput: true,
                 fixedMapPosition: true,
-                disableZooming: actZoom,
-                disablePanning: actPan
+                disableZooming: o.disable_zoom,
+                disablePanning: o.disable_navigate
                 });
 
-        console.log(o);
+       // console.log(o);
         if(o.up) o.up.apply( this );
 
         if(o.pin.length > 0){
@@ -87,10 +82,12 @@
         }
             //Callback Function
         if(o.onFinish) o.onFinish.call(this, {pin: pins, map: map});     
-        map = {};
-        o = {};
+       
         });
+        
+        delete o;
+        delete map;
+        delete this;
     }
-    
     
 })(jQuery)
