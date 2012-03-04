@@ -22,39 +22,38 @@
 </script>
 
 	<style type="text/css">
+		body{
+			background: url(whitey.png)
+		}
 		.wrap{
 			width: 900px;
 			margin: 10px auto;
-			padding: 15px
+			padding: 15px;
+			background-color: white;
+			-webkit-box-shadow: 0 0 10px rgba(0,0,0,.2);
+			-moz-box-shadow: 0 0 10px rgba(0,0,0,.2);
+			box-shadow: 0 0 10px rgba(0,0,0,.2);
 		}
 		.clear{clear: both; visibility: hidden; margin: 10px 0}
 	
 
-		.mapl{
-			width: 430px;
-			height: 300px;
-			margin-right: 20px;
-			float: left;
-		}
-		.mapr{
-			width: 430px;
-			height: 300px;
-			float: left;
+		.map{
+			width: 700px;
+			height: 400px;
+			margin: 0 auto 15px;
 		}
 		.codeshow{
-			font-size: 13px;
+			font-size: 14px;
 			word-wrap: break-word;
-			width: 430px;
-			float: left;
+			width: 900px;
+			margin-bottom: 25px
 		}
-		.codeshow + .codeshow{margin-left: 20px}
 	</style>
 </head>
 <body>
 	<div class="wrap">
 		
-		<div id="map1" class="mapl"></div><div id="map2" class="mapr"></div>
-		<hr class="clear">
+		<div id="map1" class="map"></div>
 
 		<div class="codeshow">
 			<pre class="brush: js">$('#map1').bingmap({
@@ -65,6 +64,8 @@
 
 		});</pre>
 		</div>
+
+		<div id="map2" class="map"></div>
 		<div class="codeshow">
 			<pre class="brush: js">$('#map2').bingmap({
 			api: credentials,
@@ -76,9 +77,7 @@
 		});</pre>
 		</div>
 
-		<hr class="clear">
-		<div id="map3" class="mapl"></div><div id="map4" class="mapr"></div>
-		<hr class="clear">
+		<div id="map3" class="map"></div>
 		<div class="codeshow">
 			<pre class="brush: js">$('#map3').bingmap({
 			api: credentials,
@@ -108,6 +107,8 @@
 			}
 		});</pre>
 		</div>
+
+		<div id="map4" class="map"></div>
 		<div class="codeshow">
 			<pre class="brush: js">$('#map4').bingmap({
 			api: credentials,
@@ -136,23 +137,67 @@
 		});</pre>
 		</div>
 
-		<hr class="clear">
-		<div id="map5" class="mapl"></div><div id="map6" class="mapr"></div>
-		<hr class="clear">
+		<div id="map5" class="map"></div>
 
+		<div class="codeshow">
+			<pre class="brush:js">if(navigator.geolocation){
+		    navigator.geolocation.getCurrentPosition(function(position){
+		    	MakeGeocodeRequest(position.coords.latitude,position.coords.longitude,credentials);
+		    });
+		   
+		}	
 
+		function GeocodeCallback(result) {   
+           $('#map5').bingmap({
+				api: credentials,
+				width: $('#map5').innerWidth(),
+				height: $('#map5').innerHeight(),
+				zoom: 14,
+				latitude : point.lat,
+				longitude : point.lng,
+				pin : [{
+						lat: point.lat,
+						lng: point.lng,
+						title : 'My House',
+						html : result.resourceSets[0].resources[0].address.formattedAddress,
+						width: 250,
+						height: 100,
+						onShow: true
+					}],
+				
+				});
+        }
+
+		function MakeGeocodeRequest(lat,lng,credentials) {
+        	point.lat = lat;
+        	point.lng = lng;
+            var geocodeRequest = "http://dev.virtualearth.net/REST/v1/Locations/"+lat+","+lng+"?o=json&jsonp=GeocodeCallback&key=" + credentials;
+
+            CallRestService(geocodeRequest);
+        }
+
+        function CallRestService(request) {
+            var script = document.createElement("script");
+            script.setAttribute("type", "text/javascript");
+            script.setAttribute("src", request);
+            document.body.appendChild(script);
+        }</pre>
+		</div>
+
+		<div id="map6" class="map"></div>
 	</div>
 </body>
 <script charset="UTF-8" type="text/javascript" src="bingmap.js"></script>
 <script type="text/javascript">
 		
 		var credentials = 'AtZVaPeWtqEJ7xglZZZ6WZJkMihxHRlweOWszXf0Oh7kf7SEQz1qT-jCDlGw9UAW';
+		var point = {lat : "",lng : ""}
 
 		$('#map1').bingmap({
 			api: credentials,
-			width: $('#map1').innerWidth(),
-			height: $('#map1').innerHeight(),
-			disable_zoom: false
+			/*width: $('#map1').innerWidth(),
+			height: $('#map1').innerHeight(),*/
+			//disable_zoom: false
 
 		});
 
@@ -223,79 +268,46 @@
 
 		if(navigator.geolocation){
 		    navigator.geolocation.getCurrentPosition(function(position){
-		    	var points = position.coords.latitude+ ',' +position.coords.longitude;
-		    	demo(points,credentials,position.coords.latitude,position.coords.longitude);
+		    	MakeGeocodeRequest(position.coords.latitude,position.coords.longitude,credentials);
 		    });
 		   
-		}
+		}	
 
-		function demo(point,credentials, lat,lng){
-			$.ajax({
-	            url: "http://dev.virtualearth.net/REST/v1/Locations",
-	            dataType: "jsonp",
-	            data: {
-	                key: credentials,
-	                q: point
-	            },
-	            jsonp: "jsonp",
-	        }).done(function(e){
-	           showMap(e.resourceSets[0].resources[0].address,lat,lng);
-	        });
-
-
-		}
-
-		function showMap(obj,lat,lng){
-			
-			$('#map5').bingmap({
+		function GeocodeCallback(result) {   
+           $('#map5').bingmap({
 				api: credentials,
 				width: $('#map5').innerWidth(),
 				height: $('#map5').innerHeight(),
-				zoom: 10,
-				latitude : lat,
-				longitude : lng,
+				zoom: 14,
+				latitude : point.lat,
+				longitude : point.lng,
 				pin : [{
-						lat: lat,
-						lng: lng,
-						title : 'Ma localisation',
-						width: 150,
-						height: 50,
+						lat: point.lat,
+						lng: point.lng,
+						title : 'My House',
+						html : result.resourceSets[0].resources[0].address.formattedAddress,
+						width: 250,
+						height: 100,
 						onShow: true
-					},
-					{
-						lat: 48.76218347089439,
-						lng: 2.2769074707031445,
-						title : 'Ma localisation 2',
-						width: 150,
-						height: 50
 					}],
 				
 				});
-		}
-		function GeocodeCallback(result) {   
-           console.log(result.resourceSets[0].resources[0].address);
         }
 
-		//MakeGeocodeRequest(48.76218347089439,2.2769074707031445,'AtZVaPeWtqEJ7xglZZZ6WZJkMihxHRlweOWszXf0Oh7kf7SEQz1qT-jCDlGw9UAW');
-		
-		function MakeGeocodeRequest(lat,lng,credentials)
-        {
-           var geocodeRequest = "http://dev.virtualearth.net/REST/v1/Locations/"+lat+","+lng+"?o=json&jsonp=GeocodeCallback&key=" + credentials;
+		function MakeGeocodeRequest(lat,lng,credentials) {
+        	point.lat = lat;
+        	point.lng = lng;
+            var geocodeRequest = "http://dev.virtualearth.net/REST/v1/Locations/"+lat+","+lng+"?o=json&jsonp=GeocodeCallback&key=" + credentials;
 
-           CallRestService(geocodeRequest);
+            CallRestService(geocodeRequest);
         }
 
-        function CallRestService(request) 
-        {
-           var script = document.createElement("script");
-           script.setAttribute("type", "text/javascript");
-           script.setAttribute("src", request);
-           document.body.appendChild(script);
+        function CallRestService(request) {
+            var script = document.createElement("script");
+            script.setAttribute("type", "text/javascript");
+            script.setAttribute("src", request);
+            document.body.appendChild(script);
         }
-        /*function GeocodeCallback(result) 
-        {   
-           console.log(result);
-        }
-*/
+
 	</script>
 </html>

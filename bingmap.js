@@ -89,7 +89,7 @@ var pins = [];
                                 height : e.height,
                                 visible : visible,
                                 showPointer: false,  
-                                offset: new Microsoft.Maps.Point(5,25)};
+                                offset: new Microsoft.Maps.Point(15,35)};
 
                     var infobox = new Microsoft.Maps.Infobox(new Microsoft.Maps.Location(e.lat, e.lng),infoboxOptions);
                     if(e.onShow){
