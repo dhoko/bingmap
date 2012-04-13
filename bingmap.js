@@ -1,4 +1,4 @@
-﻿/******************************************
+/******************************************
  * BingMap
  *
  * Bing Map for jQuery
@@ -14,12 +14,12 @@ var config = {
     api : "Your API Key",
     type : "road",
     zoom : 5,
-    width : 500,
-    height : 400,
+    width : null,
+    height : null,
     latitude : 48.833,
     longitude : 2.333,
     pin : [],
-    bing_logo : false,
+    bing_logo : true,
     search_logo : false,
     scaleBar : false,
     control : false,
@@ -41,7 +41,10 @@ var pins = [];
                 type_show = typeMap[i].def;
         } 
         return this.each(function(){           
-              
+            
+            if(!o.width)o.width = $(this).innerWidth();
+            if(!o.height) o.height = $(this).innerHeight();
+
             var map = new Microsoft.Maps.Map(this, {
                 credentials: o.api,
                 mapTypeId : type_show,
