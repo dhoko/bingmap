@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="fr"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="fr"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="fr"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="fr"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+
+	<!-- Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width" />
+
+	<title>Examples - BingMap plugin for jQuery using Bing Map api v7</title>
+  	<meta name="description" content="Examples - A jQuery plugin embedding Bing Maps into your website using API v7" />
+	<!-- Included CSS Files -->
+	<link rel="stylesheet" href="stylesheets/foundation.css">
+	<link rel="stylesheet" href="stylesheets/app.css">
+
+	<!--[if lt IE 9]>
+		<link rel="stylesheet" href="stylesheets/ie.css">
+	<![endif]-->
+	
+	<script src="javascripts/modernizr.foundation.js"></script>
+	<link type="text/plain" rel="author" href="humans.txt" />
+	<!-- IE Fix for HTML5 Tags -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+	<!-- container -->
+	<div class="container">
+
+		<div class="row">
+			<div class="twelve columns">
+				<h1>BingMap</h1>
+				<p>Un plugin jQuery pour utiliser simplement les cartes Bing</p>
+			<nav id="navigation" class="right">
+				<ul>
+					<li><a href="index.html" title="Bingmap un plugin jQuery pour utiliser les cartes Bing avec l'API v7">Accueil</a></li>
+					<li><a href="api.html" title="Page de documentation">Documentation/API</a></li>
+					<li><a href="exemples.html" title="Page d'exemple">Exemples</a></li>
+					<li><a href="https://github.com/dhoko/bingmap" title="Page GitHub du projet">GitHub</a></li>
+					<li><a href="download.html" title="Télécharger bingMap">Download</a></li>
+				</ul>
+			</nav>				
+			<hr />
+			</div>
+
+		</div>
+
+		<div class="row">
+			<div id="map1" class="four columns" style="height: 600px"></div>
+			<div class="eight columns">
+				<h3>Page d'exemple - BingMap pour jQuery</h3>
+				
+				<div class="ten columns centered map">
+					<div id="map2" class="mapinside"></div>
+					<blockquote class="legendMap">
+						<h5>Une carte de base, type: sky</h5>
+					</blockquote>
+					<button id="showModal2">Code Source</button>
+				</div>
+				<div class="ten columns centered map">
+					<div id="map3" class="mapinside"></div>
+					<blockquote class="legendMap">
+						<h5>Carte avec contrôles</h5>
+					</blockquote>
+					<button id="showModal3">Code Source</button>
+				</div>
+				<div class="ten columns centered map">
+					<div id="map4" class="mapinside"></div>
+					<blockquote class="legendMap">
+						<h5>Une carte avec un pin</h5>
+					</blockquote>
+					<button id="showModal4">Code Source</button>
+				</div>
+				<div class="ten columns centered map">
+					<div id="map5" class="mapinside"></div>
+					<blockquote class="legendMap">
+						<h5>Multi pin + popup</h5>
+					</blockquote>
+					<button id="showModal5">Code Source</button>
+				</div>
+				<div class="ten columns centered map">
+					<div id="map6" class="mapinside"></div>
+					<blockquote class="legendMap">
+						<h5>Pin draggable et event</h5>
+						Latitude : <span id="lat">48.873843528626914</span><br>
+						Longitude : <span id="lng">2.2290002070212145</span>
+					</blockquote>
+					<button id="showModal6">Code Source</button>
+				</div>
+				
+				<div class="ten columns centered map">
+					<div id="map7" class="mapinside"></div>
+					<blockquote class="legendMap">
+						<h5>Pin draggable et event avec requete API Bing</h5>
+						<span id="adresse"></span>
+						<button id="showModal7">Code Source</button>
+					</blockquote>
+				</div>
+				<div class="ten columns centered map">
+					<div id="map8" class="mapinside"></div>
+					<blockquote class="legendMap">
+						<h5>Geolocalisation HTML5 + API Bing</h5>
+						<span id="adresse_bing"></span><br>
+						<p>Vos coordonnées : 
+							<ul>
+								<li>Latitude : <span id="lat5"></span></li>
+								<li>Longitude : <span id="lng5"></span></li>
+							</ul>
+						</p>
+						<button id="showModal8">Code Source</button>
+					</blockquote>
+				</div> 
+
+
+
+			</div>
+
+		</div>
+
+	</div>
+	<!-- container -->
+
+<div id="myModal2" class="reveal-modal hidden">
+    <script type="text/javascript" src="https://snipt.net/embed/76bd0712e735269bd7c8edd633198737/"></script>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="myModal3" class="reveal-modal hidden">
+   <script type="text/javascript" src="https://snipt.net/embed/bdf08aa02a57748e39ceecdf56daa7bd/"></script>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="myModal4" class="reveal-modal hidden">
+    <script type="text/javascript" src="https://snipt.net/embed/6c425bfa179e8eccbe7b8b08ce171a87/"></script>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="myModal5" class="reveal-modal hidden">
+    <script type="text/javascript" src="https://snipt.net/embed/3da850aad905147b1fc0571725fe806a/"></script>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="myModal6" class="reveal-modal hidden">
+    <script type="text/javascript" src="https://snipt.net/embed/a46c467cc42100634f685172cda98b1e/"></script>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="myModal7" class="reveal-modal hidden">
+    <script type="text/javascript" src="https://snipt.net/embed/2197fe1704749e211cd9d243440392d9/"></script>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="myModal8" class="reveal-modal hidden">
+    <script type="text/javascript" src="https://snipt.net/embed/569296d16a6e9bfa642b92a88bbeffb4/"></script>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
+
+	<!-- Included JS Files -->
+	<script charset="UTF-8" type="text/javascript" src="https://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&mkt=fr-FR"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="javascripts/bingmap.min.js"></script>
+	<script src="javascripts/foundation.js"></script>
+	<script src="javascripts/app.js"></script>
+
+</body>
+</html>

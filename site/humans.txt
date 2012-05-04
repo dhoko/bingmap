@@ -1,0 +1,22 @@
+/* TEAM */
+                       
+Developers: Aurélien Garroux.
+Site: http://colibri-libre.org
+Twitter: @dhoko_
+From: Paris, France
+					
+/* THANKS */
+						
+Name: Mathieu Robin 
+Site: http://www.mathieurobin.com/
+Twitter: @mathrobin
+
+                            
+/* SITE */
+                            
+Last update: 2012/05/02 
+                        
+Standards: HTML5, CSS3, JavaScript                          
+Components: Modernizr, jQuery, Bing API
+Software: Sublime Text 2
+                         

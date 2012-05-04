@@ -1,0 +1,57 @@
+/* Foundation v2.2.1 http://foundation.zurb.com */
+/* Artfully masterminded by ZURB  */
+
+/* -------------------------------------------------- 
+   Table of Contents
+-----------------------------------------------------
+:: Shared Styles
+:: Page Name 1
+:: Page Name 2
+*/
+
+
+/* -----------------------------------------
+   Shared Styles
+----------------------------------------- */
+
+body{background-image: url(../images/scribble_light.png)}
+.container{
+	max-width: 980px;
+	margin: 10px auto;
+	background: white;
+	-webkit-box-shadow: 0 0 6px rgba(0,0,0,.1);
+	-moz-box-shadow: 0 0 6px rgba(0,0,0,.1);
+	box-shadow: 0 0 6px rgba(0,0,0,.1);
+}
+#navigation {margin-top: -60px}
+#navigation li{
+	display: inline-block;
+	padding: 3px 5px;
+}
+.map{
+	margin-bottom: 15px !important;
+	min-height: 250px;
+
+}
+.map:last-child{
+	float: none !important;
+}
+.mapinside{
+	height: 225px;
+}
+.map.right{
+	float: right !important
+}
+hr.clear{visibility: hidden}
+/* -----------------------------------------
+   Page Name 1
+----------------------------------------- */
+
+
+
+
+/* -----------------------------------------
+   Page Name 2
+----------------------------------------- */
+
+

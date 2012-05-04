@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="fr"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="fr"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="fr"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="fr"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+
+	<!-- Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width" />
+
+	<title>Documentation - BingMap plugin for jQuery using Bing Map api v7</title>
+  	<meta name="description" content="Documentation API - A jQuery plugin embedding Bing Maps into your website using API v7" />
+	<!-- Included CSS Files -->
+	<link rel="stylesheet" href="stylesheets/foundation.css">
+	<link rel="stylesheet" href="stylesheets/app.css">
+
+	<!--[if lt IE 9]>
+		<link rel="stylesheet" href="stylesheets/ie.css">
+	<![endif]-->
+	
+	<script src="javascripts/modernizr.foundation.js"></script>
+	<link type="text/plain" rel="author" href="humans.txt" />
+	<!-- IE Fix for HTML5 Tags -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+	<!-- container -->
+	<div class="container">
+
+		<div class="row">
+			<div class="twelve columns">
+				<h1>BingMap</h1>
+				<p>Un plugin jQuery pour utiliser simplement les cartes Bing</p>
+			<nav id="navigation" class="right">
+				<ul>
+					<li><a href="index.html" title="Bingmap un plugin jQuery pour utiliser les cartes Bing avec l'API v7">Accueil</a></li>
+					<li><a href="api.html" title="Page de documentation">Documentation/API</a></li>
+					<li><a href="exemples.html" title="Page d'exemple">Exemples</a></li>
+					<li><a href="https://github.com/dhoko/bingmap" title="Page GitHub du projet">GitHub</a></li>
+					<li><a href="download.html" title="Télécharger bingMap">Download</a></li>
+				</ul>
+			</nav>				
+			<hr />
+			</div>
+
+		</div>
+
+		<div class="row">
+			<div id="map1" class="four columns" style="height: 600px"></div>
+			<div class="eight columns">
+				<h3>Documentation/API - BingMap pour jQuery</h3>
+				<p>Consultez les <a href="exemples.html">exemples</a> pour voir le plugin en action</p>
+				<table>
+					<thead>
+						<tr>
+							<th>Nom</th>
+							<th>Type</th>
+							<th>Obligatoire</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>api</td>
+							<td>string</td>
+							<td><span class="green radius label">oui</span></td>
+							<td>La clé d'api Bing -> <a href="infoapi.html" "Obtenez une clé d'API">Plus d'information ici</a> </td>
+						</tr>
+						<tr>
+							<td>type</td>
+							<td>string</td>
+							<td>non</td>
+							<td>Type de carte à afficher : Défault [Road] disponnible : road/sky/bird</td>
+						</tr>
+						<tr>
+							<td>zoom</td>
+							<td>int</td>
+							<td>non</td>
+							<td>Zoom de la carte défaut: 5</td>
+						</tr>
+						<tr>
+							<td>latitude</td>
+							<td>float</td>
+							<td>non</td>
+							<td>Latitude du point central de la carte</td>
+						</tr>
+						<tr>
+							<td>longitude</td>
+							<td>float</td>
+							<td>non</td>
+							<td>Longitude du point central de la carte</td>
+						</tr>
+						<tr>
+							<td>bing_logo</td>
+							<td>boolean</td>
+							<td>non</td>
+							<td>Affiche le logo Bing sur la carte (recommandé)</td>
+						</tr>
+						<tr>
+							<td>search_logo</td>
+							<td>boolean</td>
+							<td>non</td>
+							<td>Le click sur le logo le change en barre de recherche</td>
+						</tr>
+						<tr>
+							<td>scaleBar</td>
+							<td>boolean</td>
+							<td>non</td>
+							<td>Barre de distance de la carte</td>
+						</tr>
+						<tr>
+							<td>control</td>
+							<td>boolean</td>
+							<td>non</td>
+							<td>Barre de contrôle de la carte</td>
+						</tr>
+						<tr>
+							<td>copy</td>
+							<td>boolean</td>
+							<td>non</td>
+							<td>Copyright</td>
+						</tr>
+						<tr>
+							<td>disable_zoom</td>
+							<td>boolean</td>
+							<td>non</td>
+							<td>True par défaut, ce qui active/désactive le zoom sur la carte (au passage de la sourie)</td>
+						</tr>
+						<tr>
+							<td>disable_navigate</td>
+							<td>boolean</td>
+							<td>non</td>
+							<td>True par défaut, ce qui active/désactive la navigation au click sur la carte </td>
+						</tr>
+						<tr>
+							<td>newPin</td>
+							<td>function</td>
+							<td>non</td>
+							<td>Fonction pour ajouter un point sur la carte (Pin selon les termes Bing).</td>
+						</tr>
+						<tr>
+							<td>onPin</td>
+							<td>function</td>
+							<td>non</td>
+							<td>Function pour intéragir avec un point</td>
+						</tr>
+						<tr>
+							<td>onMap</td>
+							<td>function</td>
+							<td>non</td>
+							<td>Function pour intéragir avec la carte</td>
+						</tr>
+						<tr>
+							<td>getPin</td>
+							<td>function</td>
+							<td>non</td>
+							<td>Function pour récupérer les pins dans un tableau</td>
+						</tr>
+						<tr>
+							<td>getInfo</td>
+							<td>function</td>
+							<td>non</td>
+							<td>Fonction qui va permettre de faire une requête à l'API bing pour un point.</td>
+						</tr>
+
+					</tbody>
+				</table>
+
+			</div>
+
+		</div>
+
+	</div>
+	<!-- container -->
+
+
+
+
+	<!-- Included JS Files -->
+	<script charset="UTF-8" type="text/javascript" src="https://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&mkt=fr-FR"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="javascripts/bingmap.min.js"></script>
+	<script src="javascripts/foundation.js"></script>
+	<script src="javascripts/app.js"></script>
+
+</body>
+</html>

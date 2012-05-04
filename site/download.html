@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="fr"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="fr"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="fr"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="fr"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+
+	<!-- Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width" />
+
+	<title>Examples - BingMap plugin for jQuery using Bing Map api v7</title>
+  	<meta name="description" content="Examples - A jQuery plugin embedding Bing Maps into your website using API v7" />
+	<!-- Included CSS Files -->
+	<link rel="stylesheet" href="stylesheets/foundation.css">
+	<link rel="stylesheet" href="stylesheets/app.css">
+
+	<!--[if lt IE 9]>
+		<link rel="stylesheet" href="stylesheets/ie.css">
+	<![endif]-->
+	
+	<script src="javascripts/modernizr.foundation.js"></script>
+	<link type="text/plain" rel="author" href="humans.txt" />
+	<!-- IE Fix for HTML5 Tags -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+	<!-- container -->
+	<div class="container">
+
+		<div class="row">
+			<div class="twelve columns">
+				<h1>BingMap</h1>
+				<p>Un plugin jQuery pour utiliser simplement les cartes Bing</p>
+			<nav id="navigation" class="right">
+				<ul>
+					<li><a href="index.html" title="Bingmap un plugin jQuery pour utiliser les cartes Bing avec l'API v7">Accueil</a></li>
+					<li><a href="api.html" title="Page de documentation">Documentation/API</a></li>
+					<li><a href="exemples.html" title="Page d'exemple">Exemples</a></li>
+					<li><a href="https://github.com/dhoko/bingmap" title="Page GitHub du projet">GitHub</a></li>
+					<li><a href="download.html" title="Télécharger bingMap">Download</a></li>
+				</ul>
+			</nav>				
+			<hr />
+			</div>
+
+		</div>
+
+		<div class="row">
+			<div id="map1" class="four columns" style="height: 600px"></div>
+			<div class="eight columns">
+				<h3>Téléchargement - BingMap pour jQuery</h3>
+				
+				<div class="eleven columns centered map">
+					<p>
+						<h4>Version standard (8.38ko)</h4>
+						<a href="javascripts/bingmap.js" class="nice small radius white button">bingmap.js</a>
+					</p>
+
+					<p>
+						<h4>Version minimifié (2.86ko)</h4>
+						<a href="javascripts/bingmap.min.js" class="nice small radius white button">bingmap.min.js</a>
+					</p>
+
+					<p>
+						<h4>Page Github du projet</h4>
+						<a href="https://github.com/dhoko/bingmap" class="nice small radius white button">BingMap - GitHub</a>
+					</p>
+				</div>
+				
+
+
+
+			</div>
+
+		</div>
+
+	</div>
+	<!-- container -->
+
+
+
+	<!-- Included JS Files -->
+	<script charset="UTF-8" type="text/javascript" src="https://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&mkt=fr-FR"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="javascripts/bingmap.min.js"></script>
+	<script src="javascripts/foundation.js"></script>
+	<script src="javascripts/app.js"></script>
+
+</body>
+</html>
