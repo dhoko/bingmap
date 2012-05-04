@@ -1,7 +1,6 @@
-[BingMap for jQuery] - A jQuery plugin embedding Bing Maps (API version 7) into your website
+BingMap for jQuery
 ================================
-
-The jQuery Bing Map Plugin helps you embed Bing Maps into your Website.
+A jQuery plugin embedding Bing Maps (API version 7) into your website
 
 ## Getting Started
 * Include the script from Bing 
