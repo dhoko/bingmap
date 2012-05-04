@@ -5,11 +5,13 @@
  * @author          Aurélien Garroux for Procheo
  * @link            https://github.com/dhoko/bingmap
  * @version         Version 2
+ * @licence         BSD
  *
  */
  /*
     Merci à Mathieu Robin (http://www.mathieurobin.com/) 
     pour son aide et ses conseils.
+    Un projet issu de mon travail pour Procheo (http://procheo.fr)
  */
 
 (function($){
