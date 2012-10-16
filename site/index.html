@@ -14,8 +14,8 @@
 	<title>BingMap plugin for jQuery using Bing Map api v7</title>
   	<meta name="description" content="A jQuery plugin embedding Bing Maps into your website using API v7" />
 	<!-- Included CSS Files -->
-	<link rel="stylesheet" href="stylesheets/foundation.css">
 	<link rel="stylesheet" href="stylesheets/app.css">
+	<link rel="stylesheet" href="stylesheets/prism.css">
 
 	<!--[if lt IE 9]>
 		<link rel="stylesheet" href="stylesheets/ie.css">
@@ -32,7 +32,7 @@
 </head>
 <body>
 	<!-- container -->
-	<div class="container">
+<!-- 	<div class="container">
 
 		<div class="row">
 			<div class="twelve columns">
@@ -87,17 +87,44 @@
 				<p>BingMap 2012 par Dhoko - <a href="credits.html" title="A propos de BingMap">Crédits</a></p>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<!-- container -->
 
-
+	<div id="wrapper">
+		<header class="header-site">
+			<h1 class="site-title">BingMap for jQuery</h1>
+			<h2>A jQuery plugin embedding Bing Maps (API version 7) into your website</h2>
+		</header>
+		<nav id="navigation" class="right">
+			<ul>
+				<li><a href="index.html" title="Bingmap un plugin jQuery pour utiliser les cartes Bing avec l'API v7">Accueil</a></li>
+				<li><a href="api.html" title="Page de documentation">Documentation/API</a></li>
+				<li><a href="exemples.html" title="Page d'exemple">Exemples</a></li>
+				<li><a href="https://github.com/dhoko/bingmap" title="Page GitHub du projet">GitHub</a></li>
+				<li><a href="download.html" title="Télécharger bingMap">Download</a></li>
+			</ul>
+		</nav>	
+		<article class="map-information">
+			<figure class="map-demo">
+				<div id="map" class="map-insert"></div>
+				<figcaption class="map-legend-home">
+<!-- 				<figcaption class="map-legend">
+ -->					<!-- <p>Insert this code in your head tag to load the API :</p>
+					<pre class="language-markup"><code class="language-markup">&lt;script charset=&quot;UTF-8&quot; type=&quot;text/javascript&quot; src=&quot;https://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&amp;mkt=fr-FR&quot;&gt;&lt;/script&gt;</code></pre>
+					<p>Insert this code in your head tag to load the plugin (after jQuery) :</p>
+					<pre class="language-markup"><code class="language-markup">&lt;script type=&quot;text/javascript&quot; src=&quot;javascripts/bingmap.js&quot;&gt;&lt;/script&gt;</script></code></pre>
+					<p>Exemple code for the demo :</p>
+					<pre class="language-javascript"><code class="language-javascript">$('#map').bingmap({api: credentials});</code></pre> -->
+				</figcaption>
+			</figure>
+		</article>
+	</div>
 
 
 	<!-- Included JS Files -->
 	<script charset="UTF-8" type="text/javascript" src="https://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&mkt=fr-FR"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<script src="javascripts/bingmap.js"></script>
-	<script src="javascripts/foundation.js"></script>
 	<script src="javascripts/app.js"></script>
 
 </body>
